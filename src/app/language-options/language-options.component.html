@@ -1,0 +1,55 @@
+<div class="container mt-4">
+
+    <div class="row">
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">IDE</span>
+                <div>
+                    <select class="form-select" (change)="onChangeProgrammingLanguage(selectLanguage)" #selectLanguage>
+                        <!-- <option selected>Open this select menu</option> -->
+                        <option [value]="language.id" *ngFor="let language of languageOptions"
+                            [selected]="language.id=='c'">
+                            {{language.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="row mt-4">
+
+        <div class="row">
+            <div class="col-6">
+                <div class="question ">
+                    <span [innerHTML]="question" style="white-space: pre-line;"></span>
+                </div>
+            </div>
+
+
+            <div class="col-6">
+                <div class="form-floating">
+                    <!-- <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                                                style="height: 800px" [(ngModel)]="programAnswer"></textarea> -->
+                    <ngs-code-editor [theme]="theme" [codeModel]="codeModel" [options]="options"
+                        (valueChanged)="onCodeChanged($event)" style="height: 800px">
+                    </ngs-code-editor>
+                </div>
+                <div class="mt-4">
+                    <button type="button" class="btn btn-success" (click)="submitProgrammingAnswer()">Run</button>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row " style="padding-bottom:70px ;">
+            <label>Output</label>
+            <hr />
+            <div style="border: 0.5px solid grey;padding: 5%;" *ngIf="programOutput">
+                <p *ngFor="let programOutput of programOutput;let index =index;">
+                    Test Case {{index+1}} Output : {{programOutput.output}}
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
