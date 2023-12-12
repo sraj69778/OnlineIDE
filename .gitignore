@@ -11,6 +11,9 @@
 npm-debug.log
 yarn-error.log
 
+# config
+/config
+
 # IDEs and editors
 .idea/
 .project
@@ -36,6 +39,7 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+/.angular
 
 # System files
 .DS_Store
